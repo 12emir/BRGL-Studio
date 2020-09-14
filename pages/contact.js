@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import Portfolio from "../components/Portfolio";
+import Form from "@/Form.js";
 
-const Index = () => {
+const Contact = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -12,9 +12,9 @@ const Index = () => {
       exit={{ opacity: 0, y: -50 }}
       className=' flex flex-col'
     >
-      <Portfolio />
+      <Form />
     </motion.div>
   );
 };
 
-export default Index;
+export default Contact;
