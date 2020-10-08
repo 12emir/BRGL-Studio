@@ -1,6 +1,7 @@
 import * as React from "react";
 import SingleProject from "../../components/SingleProject";
 import { images } from "../../constants";
+
 const Page = ({ index }) => {
   return <SingleProject index={index} />;
 };

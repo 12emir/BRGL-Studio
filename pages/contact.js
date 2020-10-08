@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import Form from "@/Form.js";
+import ContactForm from "@/ContactForm.js";
+import { i18n, Link, withTranslation } from "../i18n";
+import PropTypes from "prop-types";
 
-const Contact = () => {
+const Contact = ({ t }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -12,9 +14,17 @@ const Contact = () => {
       exit={{ opacity: 0, y: -50 }}
       className=' flex flex-col'
     >
-      <Form />
+      <ContactForm />
     </motion.div>
   );
 };
 
-export default Contact;
+Contact.getInitialProps = async () => ({
+  namespacesRequired: ["common", "contactForm"],
+});
+
+Contact.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withTranslation("common", "contactForm")(Contact);

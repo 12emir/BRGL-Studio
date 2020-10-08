@@ -1,10 +1,12 @@
-// components/nav.js
+import PropTypes from "prop-types";
+import { withTranslation } from "../i18n";
 
-const Footer = () => (
+const Footer = ({ t }) => (
   <div className='flex justify-between items-center p-4 '>
-    <span className='text-base tracking-widest'>Footer 2020 </span>
-    <span className='text-base tracking-widest'>Privacy policy</span>
+    <p>{t("description")}</p>
   </div>
 );
-
-export default Footer;
+Footer.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+export default withTranslation("footer")(Footer);

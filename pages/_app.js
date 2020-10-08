@@ -1,6 +1,10 @@
+import App from "next/app";
+
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import Layout from "@/Layout.js";
+import { appWithTranslation } from "../i18n";
+
 import "../styles.css";
 
 function handleExitComplete() {
@@ -9,7 +13,7 @@ function handleExitComplete() {
   }
 }
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   return (
     <>
@@ -20,6 +24,9 @@ function MyApp({ Component, pageProps }) {
       </Layout>
     </>
   );
-}
+};
+MyApp.getInitialProps = async (appContext) => ({
+  ...(await App.getInitialProps(appContext)),
+});
 
-export default MyApp;
+export default appWithTranslation(MyApp);

@@ -6,21 +6,44 @@
     "build": "next build",
     "start": "next start"
   },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js",
+      "preset": "styled-components",
+      "debugProp": true,
+      "debugPlugins": false,
+      "debug": false
+    }
+  },
   "dependencies": {
-    "@sendgrid/mail": "^7.2.5",
+    "@react-three/cannon": "^0.5.3",
+    "@react-three/drei": "^1.5.9",
+    "babel-plugin-inline-react-svg": "^1.1.1",
     "dotenv": "^8.2.0",
+    "feather-icons": "^4.28.0",
     "framer-motion": "^2.6.7",
     "gsap": "^3.5.1",
+    "i18next": "^19.7.0",
+    "locomotive-scroll": "^3.6.1",
     "next": "latest",
+    "next-i18next": "^6.0.3",
+    "nodemailer": "^6.4.12",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-icons": "^3.11.0",
-    "sqlite": "^4.0.14"
+    "react-postprocessing": "^1.4.0",
+    "react-three-fiber": "^5.0.3",
+    "splitting": "^1.0.6",
+    "styled-components": "^5.2.0",
+    "swr": "^0.3.5",
+    "three": "^0.121.1",
+    "twin.macro": "^1.10.0"
   },
   "license": "MIT",
   "devDependencies": {
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.7.4"
+    "tailwindcss": "^1.7.4",
+    "prettier": "^2.1.2"
   }
 }

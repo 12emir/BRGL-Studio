@@ -1,0 +1,9 @@
+{
+  "title": "Contact us",
+  "namePlaceholder": "name",
+  "nameLabel": "Your Name",
+  "msgPlaceholder": "E.g. Describe your project",
+  "msgLabel": "Your message ",
+  "emailLabel": "Your Email Address",
+  "emailPlaceholder": "E.g. John Doe"
+}
