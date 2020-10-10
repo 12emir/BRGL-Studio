@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import { i18n, Link, withTranslation } from "../i18n";
-
+import gsap from "gsap";
 const MorphOverlay = dynamic(() => import("@/MorphOverlay/MorphOverlay"));
 
 import { useTheme, useThemeUpdate } from "./ThemeContext";
@@ -11,39 +11,42 @@ import { useTheme, useThemeUpdate } from "./ThemeContext";
 const Logo = () => {
   const darkTheme = useTheme();
 
-  const magnetMouseOn = () => {};
+  // const magnetMouseOn = () => {
+  //   TweenMax.to(this, 0.3, { transformOrigin: "0 0", scale: 1.5 });
+  //   TweenMax.to(".circle", 0.3, { scale: 0.85 });
+  // };
 
-  $("#container").mouseleave(function (e) {
-    TweenMax.to(this, 0.3, { scale: 1 });
-    TweenMax.to(".circle, .hamburger", 0.3, { scale: 1, x: 0, y: 0 });
-  });
+  // $("#container").mouseleave(function (e) {
+  //   TweenMax.to(this, 0.3, { scale: 1 });
+  //   TweenMax.to(".circle, .hamburger", 0.3, { scale: 1, x: 0, y: 0 });
+  // });
 
-  $("#container").mouseenter(function (e) {
-    TweenMax.to(this, 0.3, { transformOrigin: "0 0", scale: 1.5 });
-    TweenMax.to(".circle", 0.3, { scale: 0.85 });
-  });
+  // $("#container").mouseenter(function (e) {
+  //   TweenMax.to(this, 0.3, { transformOrigin: "0 0", scale: 1.5 });
+  //   TweenMax.to(".circle", 0.3, { scale: 0.85 });
+  // });
 
-  $("#container").mousemove(function (e) {
-    callParallax(e);
-  });
+  // $("#container").mousemove(function (e) {
+  //   callParallax(e);
+  // });
 
-  function callParallax(e) {
-    parallaxIt(e, ".circle", 80);
-    parallaxIt(e, ".hamburger", 60);
-  }
+  // function callParallax(e) {
+  //   parallaxIt(e, ".circle", 80);
+  //   parallaxIt(e, ".hamburger", 60);
+  // }
 
-  function parallaxIt(e, target, movement) {
-    var $this = $("#container");
-    var boundingRect = $this[0].getBoundingClientRect();
-    var relX = e.pageX - boundingRect.left;
-    var relY = e.pageY - boundingRect.top;
+  // function parallaxIt(e, target, movement) {
+  //   var $this = $("#container");
+  //   var boundingRect = $this[0].getBoundingClientRect();
+  //   var relX = e.pageX - boundingRect.left;
+  //   var relY = e.pageY - boundingRect.top;
 
-    TweenMax.to(target, 0.3, {
-      x: ((relX - boundingRect.width / 2) / boundingRect.width) * movement,
-      y: ((relY - boundingRect.height / 2) / boundingRect.width) * movement,
-      ease: Power2.easeOut,
-    });
-  }
+  //   TweenMax.to(target, 0.3, {
+  //     x: ((relX - boundingRect.width / 2) / boundingRect.width) * movement,
+  //     y: ((relY - boundingRect.height / 2) / boundingRect.width) * movement,
+  //     ease: Power2.easeOut,
+  //   });
+  // }
 
   return (
     <Link href='/' className='logo'>
