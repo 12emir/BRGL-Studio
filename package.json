@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start"
   },
   "babelMacros": {
@@ -16,6 +16,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "dotenv": "^8.2.0",
     "feather-icons": "^4.28.0",
