@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Layout from "@/Layout.js";
 import { appWithTranslation } from "../i18n";
 
-import "../styles.css";
+import "../styles.scss";
 
 function handleExitComplete() {
   if (typeof window !== "undefined") {

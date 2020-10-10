@@ -1,10 +1,8 @@
-import { motion } from "framer-motion";
-import Portfolio from "../components/Portfolio";
 import { i18n, Link, withTranslation } from "../i18n";
-import PropTypes from "prop-types";
-import Posts from "@/Posts";
-import ThreeFiber from "@/ThreeFiber";
-import Canvas from "@/BlobCanvas/BlobCanvas";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+
+const Hero = dynamic(() => import("@/Hero"));
 
 const Index = ({ t }) => {
   return (
@@ -17,11 +15,7 @@ const Index = ({ t }) => {
       exit={{ opacity: 0, y: -50 }}
       className=' flex flex-col'
     >
-      <Canvas />
-      {/* <ThreeFiber /> */}
-      <Posts />
-
-      <Portfolio />
+      <Hero />
     </motion.div>
   );
 };
@@ -29,9 +23,5 @@ const Index = ({ t }) => {
 Index.getInitialProps = async () => ({
   namespacesRequired: ["common"],
 });
-
-Index.propTypes = {
-  t: PropTypes.func.isRequired,
-};
 
 export default withTranslation("common")(Index);

@@ -9,50 +9,156 @@ import { i18n, Link, withTranslation } from "../i18n";
 
 const Header = tw.header`
   flex justify-between items-center
-   mx-auto p-3 bg-gray-100
+   mx-auto p-6  absolute z-10 w-screen 
 `;
 
-export const NavLinks = tw.div`inline-block`;
+const Logo = () => {
+  return (
+    <Link href='/'>
+      <svg
+        width='82'
+        height='47'
+        viewBox='0 0 82 47'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          d='M6.24233 6.28763H0V0C3.45062 0 6.24233 2.81197 6.24233 6.28763Z'
+          fill='#30349E'
+        />
+        <path d='M6.24233 6.28763H0V22.0242H6.24233V6.28763Z' fill='#30349E' />
+        <path
+          d='M12.476 9.45764C5.58342 9.45764 0 15.0816 0 22.0242H6.23367C6.23367 18.5572 9.02538 15.7453 12.4673 15.7453C15.9093 15.7453 18.701 18.5572 18.701 22.0242H24.9347C24.9433 15.0816 19.3599 9.45764 12.476 9.45764Z'
+          fill='#30349E'
+        />
+        <path
+          d='M12.4673 34.5819C19.3512 34.5819 24.9347 28.958 24.9347 22.0154H18.701C18.701 25.4823 15.9093 28.2943 12.4673 28.2943V34.5819Z'
+          fill='#30349E'
+        />
+        <path
+          d='M33.5872 9.49255H27.3449V28.3031H33.5872V9.49255Z'
+          fill='#30349E'
+        />
+        <path
+          d='M33.5872 28.3031H27.3449V34.5907C30.7955 34.5907 33.5872 31.7787 33.5872 28.3031Z'
+          fill='#30349E'
+        />
+        <path
+          d='M33.5872 15.6667H39.8296V9.37906C36.3876 9.37906 33.5872 12.1998 33.5872 15.6667Z'
+          fill='#30349E'
+        />
+        <path
+          d='M46.0719 9.37906H39.8296V15.6667C43.2802 15.6667 46.0719 12.8547 46.0719 9.37906Z'
+          fill='#30349E'
+        />
+        <path
+          d='M60.8368 22.0242C60.8368 15.0903 55.2534 9.45764 48.3608 9.45764V15.7365C51.8027 15.7365 54.5944 18.5485 54.5944 22.0154C54.5944 25.4824 51.8027 28.2943 48.3608 28.2943V34.582C55.2534 34.582 60.8368 28.958 60.8368 22.0242Z'
+          fill='#30349E'
+        />
+        <path
+          d='M35.8934 22.0242C35.8934 28.958 41.4769 34.582 48.3694 34.582V28.3031C44.9275 28.3031 42.1358 25.4911 42.1358 22.0242H35.8934Z'
+          fill='#30349E'
+        />
+        <path
+          d='M42.1271 47H48.3694V40.7124C44.9188 40.7124 42.1271 43.5331 42.1271 47Z'
+          fill='#30349E'
+        />
+        <path
+          d='M54.6118 40.7124H48.3694V47C51.8201 47 54.6118 44.188 54.6118 40.7124Z'
+          fill='#30349E'
+        />
+        <path
+          d='M54.6061 34.6257H60.8484V22.033H54.6061V34.6257Z'
+          fill='#30349E'
+        />
+        <path
+          d='M54.6118 40.9132V34.6256H60.8541C60.8541 38.0925 58.0624 40.9132 54.6118 40.9132Z'
+          fill='#30349E'
+        />
+        <path
+          d='M69.5153 15.7627H63.273V34.5732H69.5153V15.7627Z'
+          fill='#30349E'
+        />
+        <path
+          d='M69.5153 15.7627H63.273V9.4751C66.715 9.4751 69.5153 12.2871 69.5153 15.7627Z'
+          fill='#30349E'
+        />
+        <path
+          d='M69.5153 34.5907H75.7577V28.3031C72.307 28.3031 69.5153 31.115 69.5153 34.5907Z'
+          fill='#30349E'
+        />
+        <path
+          d='M82 28.3031H75.7577V34.5907C79.1996 34.5907 82 31.7787 82 28.3031Z'
+          fill='#30349E'
+        />
+      </svg>
+    </Link>
+  );
+};
 
-/* hocus: stands for "on hover or focus"
- * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
- */
-export const NavLink = tw.span`
-  text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
-`;
+const LocaleSwitcher = () => {
+  return (
+    <div className='locale-switcher'>
+      <span onClick={() => i18n.changeLanguage("pl")}>PL</span>
+      <span onClick={() => i18n.changeLanguage("en")}>EN</span>
+    </div>
+  );
+};
 
-export const PrimaryLink = tw(NavLink)`
-  lg:mx-0
-  px-8 py-3 rounded bg-primary-500 text-gray-100
-  hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
-  border-b-0
-`;
-
-export const LogoLink = styled(NavLink)`
-  ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
-
-  img {
-    ${tw`w-10 mr-3`}
-  }
-`;
-
-export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
-export const NavToggle = tw.button`
-  lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
-`;
-export const MobileNavLinks = motion.custom(styled.div`
-  ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
-  ${NavLinks} {
-    ${tw`flex flex-col items-center`}
-  }
-`);
-
-export const DesktopNavLinks = tw.nav`
-  hidden lg:flex flex-1 justify-between items-center
-`;
-
+const Hamburger = () => {
+  return (
+    <div className='hamburger'>
+      <svg
+        width='28'
+        height='23'
+        viewBox='0 0 33 26'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          d='M0 4.91892H4.4423V0C1.99287 0 0 2.20668 0 4.91892Z'
+          fill='#30349E'
+        />
+        <path
+          d='M33 0H28.5577V4.91892C31.0133 4.91892 33 2.71907 33 0Z'
+          fill='#30349E'
+        />
+        <rect x='4.44232' width='24.1153' height='4.91892' fill='#30349E' />
+        <path
+          d='M0 15.4595H4.4423V10.5406C1.99287 10.5406 0 12.7472 0 15.4595Z'
+          fill='#30349E'
+        />
+        <path
+          d='M33 10.5406H28.5577V15.4595C31.0133 15.4595 33 13.2596 33 10.5406Z'
+          fill='#30349E'
+        />
+        <rect
+          x='4.44226'
+          y='10.5406'
+          width='24.1153'
+          height='4.91892'
+          fill='#30349E'
+        />
+        <path
+          d='M33 21.0811L28.5577 21.0811L28.5577 26C31.0071 26 33 23.7933 33 21.0811Z'
+          fill='#30349E'
+        />
+        <path
+          d='M-4.00543e-05 26L4.44226 26L4.44226 21.0811C1.98666 21.0811 -3.98396e-05 23.2809 -4.00543e-05 26Z'
+          fill='#30349E'
+        />
+        <rect
+          x='28.5577'
+          y='26'
+          width='24.1153'
+          height='4.91892'
+          transform='rotate(-180 28.5577 26)'
+          fill='#30349E'
+        />
+      </svg>
+    </div>
+  );
+};
 const Nav = ({
   t,
   roundedHeaderButton = false,
@@ -61,97 +167,15 @@ const Nav = ({
   className,
   collapseBreakpointClass = "lg",
 }) => {
-  const defaultLinks = [
-    <NavLinks key={1}>
-      <Link href='/'>
-        <NavLink>{t("home")}</NavLink>
-      </Link>
-      <Link href='/contact'>
-        <NavLink> {t("contact")} </NavLink>
-      </Link>
-      <button
-        type='button'
-        onClick={() =>
-          i18n.changeLanguage(i18n.language === "en" ? "pl" : "en")
-        }
-      >
-        {t("change-locale")}
-      </button>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href='/#'>
-        {t("contact")}{" "}
-      </PrimaryLink>
-    </NavLinks>,
-  ];
-
-  const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
-  const collapseBreakpointCss =
-    collapseBreakPointCssMap[collapseBreakpointClass];
-
-  const defaultLogoLink = <LogoLink href='/'>Treact</LogoLink>;
-
-  logoLink = logoLink || defaultLogoLink;
-  links = links || defaultLinks;
-
   return (
     <Header className={className || "header-light"}>
-      <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
-        {logoLink}
-        {links}
-      </DesktopNavLinks>
-
-      <MobileNavLinksContainer
-        css={collapseBreakpointCss.mobileNavLinksContainer}
-      >
-        {logoLink}
-        <MobileNavLinks
-          initial={{ x: "150%", display: "none" }}
-          animate={animation}
-          css={collapseBreakpointCss.mobileNavLinks}
-        >
-          {links}
-        </MobileNavLinks>
-        <NavToggle
-          onClick={toggleNavbar}
-          className={showNavLinks ? "open" : "closed"}
-        >
-          {showNavLinks ? (
-            <CloseIcon tw='w-6 h-6' />
-          ) : (
-            <MenuIcon tw='w-6 h-6' />
-          )}
-        </NavToggle>
-      </MobileNavLinksContainer>
+      <Logo />
+      <div className='hamburger-locale-wrapper'>
+        <LocaleSwitcher />
+        <Hamburger />
+      </div>
     </Header>
   );
-};
-
-/* The below code is for generating dynamic break points for navbar.
- * Using this you can specify if you want to switch
- * to the toggleable mobile navbar at "sm", "md" or "lg" or "xl" above using the collapseBreakpointClass prop
- * Its written like this because we are using macros and we can not insert dynamic variables in macros
- */
-
-const collapseBreakPointCssMap = {
-  sm: {
-    mobileNavLinks: tw`sm:hidden`,
-    desktopNavLinks: tw`sm:flex`,
-    mobileNavLinksContainer: tw`sm:hidden`,
-  },
-  md: {
-    mobileNavLinks: tw`md:hidden`,
-    desktopNavLinks: tw`md:flex`,
-    mobileNavLinksContainer: tw`md:hidden`,
-  },
-  lg: {
-    mobileNavLinks: tw`lg:hidden`,
-    desktopNavLinks: tw`lg:flex`,
-    mobileNavLinksContainer: tw`lg:hidden`,
-  },
-  xl: {
-    mobileNavLinks: tw`lg:hidden`,
-    desktopNavLinks: tw`lg:flex`,
-    mobileNavLinksContainer: tw`lg:hidden`,
-  },
 };
 
 export default withTranslation("nav")(Nav);
