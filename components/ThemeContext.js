@@ -12,9 +12,12 @@ export function ThemeProvider({ children }) {
   function toggleTheme() {
     setDarkTheme((prevDarkTheme) => !prevDarkTheme);
   }
+  function dark() {
+    setDarkTheme(true);
+  }
   return (
     <ThemeContext.Provider value={darkTheme}>
-      <ThemeUpdateContext.Provider value={toggleTheme}>
+      <ThemeUpdateContext.Provider value={dark}>
         {children}
       </ThemeUpdateContext.Provider>
     </ThemeContext.Provider>

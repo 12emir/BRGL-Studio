@@ -4,8 +4,12 @@ import { useRouter } from "next/router";
 import Layout from "@/Layout.js";
 import { appWithTranslation } from "../i18n";
 import { ThemeProvider } from "@/ThemeContext.js";
-import "../styles.scss";
+import "../style/styles.scss";
+import "../style/hamburger.scss";
+import "../style/portfolio.scss";
+
 import "../morph.css";
+
 function handleExitComplete() {
   if (typeof window !== "undefined") {
     window.scrollTo({ top: 0 });

@@ -13,8 +13,8 @@
   --font-weight-title: 400;
   --color-menu: #ffffff;
   --color-menu-hover: #c14343;
-  --font-size-menu: 3.5vmax;
-  --font-weight-menu: 400;
+  --font-size-menu: 2.5vmax;
+  --font-weight-menu: 800;
   --button-bg: #120047;
   --button-circle: #9236f7;
   --button-line: #ffffff;
@@ -39,6 +39,7 @@
   left: 0;
   pointer-events: none;
   z-index: 100;
+  padding: 0 10%;
 }
 .global-menu__item {
   color: var(--color-menu);

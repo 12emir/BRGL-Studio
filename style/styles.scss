@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables.scss";
+
+:root {
+  font-size: 15px;
+}
+body {
+  font-family: "Raleway", sans-serif;
+  padding: 0;
+  margin: 0;
+  cursor: none;
+  --color-text: #111;
+  --color-bg: #f8ecde;
+  --color-link: #b19e7f;
+  --color-link-hover: #000;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
+
+.svgfillblue {
+  fill: $primary;
+}
+.svgfillwhite {
+  fill: white;
+}
+.primary-class {
+  color: $primary;
+}
+//Cursor
+.cursor {
+  position: fixed;
+  background: $primary-inverted;
+  width: 25px;
+  height: 25px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+}
+// NAVBAR
+.locale-switcher span {
+  font-size: 17px;
+  margin-right: 10px;
+  padding: 5px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  &:hover {
+    font-weight: 900;
+  }
+}
+
+.locale-switcher {
+  margin-right: 25px;
+}
+.hamburger-locale-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.hamburger {
+  z-index: 9999;
+}
+
+.magnetic:hover > .cursor {
+  transform: scale(2);
+  background: $primary;
+}
+
+.magnetic:hover + .cursor {
+  transform: scale(2);
+  background: $primary;
+}
+
+.magnetic:hover:hover .cursor {
+  transform: scale(2);
+  background: $primary;
+}
+
+.magnetic:hover ~ .cursor {
+  transform: scale(2);
+  background: $primary;
+}
+
+// HERO
+.shapes {
+  position: relative;
+  height: 94vh;
+  width: 97vw;
+  background: $gradient4;
+  overflow: hidden;
+}
+.shape {
+  will-change: transform;
+  position: absolute;
+  border-radius: 50%;
+  $shapes: (
+    $gradient3: 650px,
+    $gradient2: 440px,
+    $gradient1: 270px,
+  );
+  @each $color, $size in $shapes {
+    &.shape-#{index($shapes, ($color $size))} {
+      background: $color;
+      width: $size;
+      height: $size;
+      margin: (-$size/2) 0 0 (-$size/2);
+    }
+  }
+}
+.hero-content {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  mix-blend-mode: screen;
+}
+.hero-title {
+  @include rf(100, 200); // defined in imported pen;
+  margin: 0;
+  text-align: center;
+  font-weight: 900;
+}
+.hero-title-content {
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+  max-width: 400px;
+  line-height: 1.5em;
+  font-weight: 600;
+  font-size: 17px;
+}
+::selection {
+  color: #fff;
+  background: $primary;
+}
+
+/*  MAGNET */
+.magnetic {
+  margin: -100px;
+  padding: 100px;
+  display: inline-block;
+  border-radius: 50%;
+  /*border: 1px solid #000; //use this for debugging*/
+}
+
+#magnet-button {
+  display: inline-block;
+}
+
+/*  Hamburger */

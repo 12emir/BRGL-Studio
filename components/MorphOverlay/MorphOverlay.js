@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import Link from "next/link";
+
+import { motion } from "framer-motion";
 const MorphOverlay = () => {
   useEffect(() => {
     const ease = {
@@ -74,6 +77,7 @@ const MorphOverlay = () => {
       }
       navigate(linkEl);
     });
+
     class ShapeOverlays {
       constructor(elm) {
         this.elm = elm;
@@ -135,6 +139,7 @@ const MorphOverlay = () => {
         str += this.isOpened ? `V 100 H 0` : `V 0 H 0`;
         return str;
       }
+
       render() {
         if (this.isOpened) {
           for (var i = 0; i < this.path.length; i++) {
@@ -174,11 +179,36 @@ const MorphOverlay = () => {
         }
       }
     }
+
     (function () {
       const elmHamburger = document.querySelector(".hamburger");
+      const overlayShutter = document.querySelector(".overlay-shutter");
+
       const gNavItems = document.querySelectorAll(".global-menu__item");
       const elmOverlay = document.querySelector(".shape-overlays");
+
       const overlay = new ShapeOverlays(elmOverlay);
+
+      for (var i = 0; i < gNavItems.length; i++) {
+        gNavItems[i].addEventListener("click", () => {
+          if (overlay.isAnimating) {
+            return false;
+          }
+          overlay.toggle();
+          if (overlay.isOpened === true) {
+            elmHamburger.classList.add("is-opened-navi");
+            for (var i = 0; i < gNavItems.length; i++) {
+              gNavItems[i].classList.add("is-opened");
+            }
+          } else {
+            elmHamburger.classList.remove("is-opened-navi");
+            for (var i = 0; i < gNavItems.length; i++) {
+              gNavItems[i].classList.remove("is-opened");
+            }
+          }
+        });
+      }
+
       elmHamburger.addEventListener("click", () => {
         if (overlay.isAnimating) {
           return false;
@@ -198,8 +228,11 @@ const MorphOverlay = () => {
       });
     })();
   }, []);
+  const toggleTransition = () => {
+    ShapeOverlays.toggle();
+  };
   return (
-    <div className='demo-6'>
+    <motion.div exit={{ opacity: 0 }} className='demo-6'>
       <main class='main main--demo-6'>
         <div class='content content--demo-6'>
           <div class=' hamburger--demo-6 js-hover'>
@@ -220,15 +253,22 @@ const MorphOverlay = () => {
             </div>
           </div>
           <div class='global-menu'>
-            <a class='global-menu__item global-menu__item--demo-6' href='#'>
-              Portfolio{" "}
-            </a>
-            <a class='global-menu__item global-menu__item--demo-6' href='#'>
+            <Link href='/portfolio'>
+              <a class='linkz global-menu__item global-menu__item--demo-6'>
+                Portfolio{" "}
+              </a>
+            </Link>
+            <a
+              class='global-menu__item linkz global-menu__item--demo-6'
+              href='#'
+            >
               About
             </a>
-            <a class='global-menu__item global-menu__item--demo-6' href='#'>
-              Contact
-            </a>
+            <Link href='/contact'>
+              <a class='overlay-shutter linkz global-menu__item global-menu__item--demo-6'>
+                Contact{" "}
+              </a>
+            </Link>
           </div>
           <svg
             class='shape-overlays'
@@ -255,7 +295,7 @@ const MorphOverlay = () => {
           </svg>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 };
 export default MorphOverlay;
