@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
+
 @import "./variables.scss";
 
 :root {
@@ -12,12 +15,7 @@ body {
   padding: 0;
   margin: 0;
   cursor: none;
-  --color-text: #111;
-  --color-bg: #f8ecde;
-  --color-link: #b19e7f;
-  --color-link-hover: #000;
-  color: var(--color-text);
-  background-color: var(--color-bg);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -30,7 +28,22 @@ body {
   -webkit-user-select: none;
 }
 
-.svgfillblue {
+.czesc {
+  @include rf(100, 200); // defined in imported pen;
+
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  line-height: 0.8em;
+  text-align: center;
+  font-weight: 900;
+}
+.logo {
+  position: fixed;
+  left: 2em;
+  top: 2em;
+  z-index: 99;
+}
+.svgfillprimary {
   fill: $primary;
 }
 .svgfillwhite {
@@ -38,6 +51,10 @@ body {
 }
 .primary-class {
   color: $primary;
+}
+
+.primary-bg {
+  background-color: $primary;
 }
 //Cursor
 .cursor {
@@ -54,27 +71,12 @@ body {
   mix-blend-mode: difference;
 }
 // NAVBAR
-.locale-switcher span {
-  font-size: 17px;
-  margin-right: 10px;
-  padding: 5px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  &:hover {
-    font-weight: 900;
-  }
-}
 
-.locale-switcher {
-  margin-right: 25px;
-}
-.hamburger-locale-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
 .hamburger {
-  z-index: 9999;
+  z-index: 1;
+  position: absolute;
+  top: 2em;
+  right: 2em;
 }
 
 .magnetic:hover > .cursor {
@@ -98,16 +100,21 @@ body {
 }
 
 // HERO
+
+.shapes-container {
+  padding: 16px;
+}
 .shapes {
   position: relative;
-  height: 94vh;
-  width: 97vw;
+  height: 100%;
+  width: 100%;
   background: $gradient4;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 .shape {
   will-change: transform;
   position: absolute;
+
   border-radius: 50%;
   $shapes: (
     $gradient3: 650px,
@@ -123,6 +130,13 @@ body {
     }
   }
 }
+.small {
+  width: 650px;
+}
+
+.big {
+  width: 900px;
+}
 .hero-content {
   top: 0;
   left: 0;
@@ -135,10 +149,6 @@ body {
   mix-blend-mode: screen;
 }
 .hero-title {
-  @include rf(100, 200); // defined in imported pen;
-  margin: 0;
-  text-align: center;
-  font-weight: 900;
 }
 .hero-title-content {
   position: absolute;

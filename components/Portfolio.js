@@ -40,7 +40,7 @@ const ProjectList = () => {
 
   return (
     <main className='bg-white'>
-      <Gradients />
+      {/* <Gradients /> */}
       <nav className='menu'>
         {lols.map(({ item, i }) => (
           <div key={i} className='menu__item flex flex-col'>

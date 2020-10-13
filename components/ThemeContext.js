@@ -8,16 +8,30 @@ export function useThemeUpdate() {
   return useContext(ThemeUpdateContext);
 }
 export function ThemeProvider({ children }) {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkNavTheme, setDarkNavTheme] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   function toggleTheme() {
-    setDarkTheme((prevDarkTheme) => !prevDarkTheme);
+    setDarkNavTheme(!darkNavTheme);
   }
-  function dark() {
-    setDarkTheme(true);
+
+  function isHamburgerOpen() {
+    setIsOpen(!isOpen);
+    console.log("isHamburgerOpen()", isOpen);
   }
+
+  function darkNav() {
+    setDarkNavTheme(true);
+  }
+  function lightNav() {
+    setDarkNavTheme(false);
+  }
+
   return (
-    <ThemeContext.Provider value={darkTheme}>
-      <ThemeUpdateContext.Provider value={dark}>
+    <ThemeContext.Provider value={{ darkNavTheme, isOpen }}>
+      <ThemeUpdateContext.Provider
+        value={{ toggleTheme, darkNav, lightNav, isHamburgerOpen }}
+      >
         {children}
       </ThemeUpdateContext.Provider>
     </ThemeContext.Provider>

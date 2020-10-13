@@ -3,13 +3,13 @@ import { withTranslation } from "../i18n";
 import tw from "twin.macro";
 
 import gsap, { Power4 } from "gsap";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme, useThemeUpdate } from "./ThemeContext";
 
 const Hero = ({ t }) => {
-  const darkTheme = useTheme();
-  const toggleTheme = useThemeUpdate();
-  console.log(darkTheme);
+  const { darkNavTheme } = useTheme();
+  const { toggleTheme } = useThemeUpdate();
+
   useEffect(() => {
     document.body.addEventListener("mousemove", (evt) => {
       const mouseX = evt.clientX;
@@ -21,71 +21,80 @@ const Hero = ({ t }) => {
         stagger: -0.1,
       });
     });
+    gsap.fromTo(
+      ".czesc",
+      { opacity: 0, scale: 1.3, letterSpacing: "30px" },
+      {
+        scale: 1,
+        opacity: 1,
+        letterSpacing: "10px",
+        ease: "elastic.out",
+        duration: 2.9,
+        delay: 0.4,
+      }
+    );
   }, []);
 
-  // useEffect(() => {
-  //   var magnets = document.querySelectorAll(".magnetic-hero");
-  //   var strength = 35;
+  const logoMouseOver = () => {
+    gsap.to(".czesc", {
+      scale: 0.9,
+      letterSpacing: "30px",
+      ease: "elastic.out",
+      duration: 1.9,
+    });
+  };
 
-  //   magnets.forEach((magnet) => {
-  //     magnet.addEventListener("mousemove", moveMagnet);
-  //     magnet.addEventListener("mouseout", function (event) {
-  //       gsap.to(event.currentTarget, 2, {
-  //         x: 0,
-  //         y: 0,
-  //         ease: Power4.easeOut,
-  //       });
-  //     });
-  //   });
-
-  //   function moveMagnet(event) {
-  //     var magnetButton = event.currentTarget;
-  //     var bounding = magnetButton.getBoundingClientRect();
-
-  //     //console.log(magnetButton, bounding)
-
-  //     gsap.to(magnetButton, 1, {
-  //       x:
-  //         ((event.clientX - bounding.left) / magnetButton.offsetWidth - 0.5) *
-  //         strength,
-  //       y:
-  //         ((event.clientY - bounding.top) / magnetButton.offsetHeight - 0.5) *
-  //         strength,
-  //       ease: Power4.easeOut,
-  //     });
-
-  //     //magnetButton.style.transform = 'translate(' + (((( event.clientX - bounding.left)/(magnetButton.offsetWidth))) - 0.5) * strength + 'px,'+ (((( event.clientY - bounding.top)/(magnetButton.offsetHeight))) - 0.5) * strength + 'px)';
-  //   }
-  // }, []);
-
+  const logoMouseOut = () => {
+    gsap.to(".czesc", {
+      scale: 1,
+      letterSpacing: "10px",
+      ease: "elastic.out",
+      duration: 2.9,
+    });
+  };
   return (
-    <div className='flex justify-center items-center h-screen bg-white'>
-      <div className='shapes '>
-        <div className='shape shape-1'></div>
+    <div className='shapes-container flex justify-center items-center h-screen bg-white'>
+      <div className='shapes'>
+        <div className={`${darkNavTheme ? "" : ""}shape shape-1`}></div>
+
         <div className='shape shape-2'></div>
         <div className='shape shape-3'></div>
       </div>
-      <div className={` hero-content ${darkTheme ? "bg-black" : "bg-white"}`}>
-        <motion.h1
-          initial={{ scale: 0 }}
-          animate={{ scale: 1, transition: { delay: 0.25 } }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`hero-title ${darkTheme ? "text-white" : "text-black"}`}
-          onClick={toggleTheme}
-        >
-          {t("title")}
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ y: -100, opacity: 1, transition: { delay: 0.35 } }}
+      <div
+        className={` hero-content ${darkNavTheme ? "bg-black" : "bg-white"}`}
+      >
+        <div>
+          <motion.h1
+            className={`czesc  ${darkNavTheme ? "text-white" : "text-black"}`}
+            onClick={toggleTheme}
+            onMouseEnter={logoMouseOver}
+            onMouseLeave={logoMouseOut}
+          >
+            {t("title")}
+          </motion.h1>
+        </div>
+        <div
           className={` hero-title-content ${
-            darkTheme ? "text-white" : "text-black"
+            darkNavTheme ? "text-white" : "text-black"
           }`}
         >
-          <p className='mb-3'>{t("content-title")}</p>
+          <div className='mb-4' onClick={toggleTheme}>
+            {t("content-title")}{" "}
+            <AnimatePresence>
+              {darkNavTheme && (
+                <motion.span
+                  initial={{ y: 100 }}
+                  animate={{ y: 0 }}
+                  exit={{ y: 100 }}
+                >
+                  {t("content-span")}
+                </motion.span>
+              )}
+              {!darkNavTheme && <span className='underline'>ptrcj brgl</span>}
+            </AnimatePresence>
+          </div>
           <p>{t("content")}</p>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

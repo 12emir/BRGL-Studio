@@ -1,9 +1,9 @@
 {
-  "title": "Contact us",
-  "namePlaceholder": "name",
-  "nameLabel": "Your Name",
-  "msgPlaceholder": "E.g. Describe your project",
-  "msgLabel": "Your message ",
-  "emailLabel": "Your Email Address",
-  "emailPlaceholder": "E.g. John Doe"
+  "title": "Skontaktuj się z nami",
+  "namePlaceholder": "Podaj imie",
+  "nameLabel": "Imię",
+  "msgPlaceholder": "Opisz w skrócie swój projekt",
+  "msgLabel": "Twoja wiadomość",
+  "emailLabel": "Twój adres e-mail",
+  "emailPlaceholder": "np. jan@nowak.pl"
 }

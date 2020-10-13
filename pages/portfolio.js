@@ -6,11 +6,12 @@ import Portfolio from "@/Portfolio";
 import { useTheme, useThemeUpdate } from "@/ThemeContext";
 
 const Work = ({ t }) => {
-  const darkTheme = useTheme();
-  const dark = useThemeUpdate();
+  const { darkNavTheme } = useTheme();
+  const { light, lightNav } = useThemeUpdate();
   useEffect(() => {
-    dark();
+    lightNav();
   }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,7 +25,6 @@ const Work = ({ t }) => {
     </motion.div>
   );
 };
-
 Work.getInitialProps = async () => ({
   namespacesRequired: ["common"],
 });

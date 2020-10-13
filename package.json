@@ -23,6 +23,7 @@
     "framer-motion": "^2.7.9",
     "gsap": "^3.5.1",
     "i18next": "^19.8.2",
+    "include-media": "^1.4.9",
     "locomotive-scroll": "^3.6.1",
     "next": "^9.5.4",
     "next-i18next": "^6.0.3",
