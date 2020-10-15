@@ -80,7 +80,7 @@ const Logo = () => {
   }, []);
 
   return (
-    <div class='magnetic logo' onClick={logoCloseOverlay}>
+    <div className='magnetic logo' onClick={logoCloseOverlay}>
       <Link href='/'>
         <svg
           width='82'
@@ -291,6 +291,7 @@ const Nav = ({ t }) => {
               y: "100vh",
               transition: { ease: easing, duration: 0.6, delay: 0.5 },
             }}
+            className='morph'
           >
             <MorphOverlay />
           </motion.div>

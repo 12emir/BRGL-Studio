@@ -6,6 +6,7 @@ import { appWithTranslation } from "../i18n";
 import { ThemeProvider } from "@/ThemeContext.js";
 import "../style/styles.scss";
 import "../style/portfolio.scss";
+import "../style/morph.scss";
 
 function handleExitComplete() {
   if (typeof window !== "undefined") {

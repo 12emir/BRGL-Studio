@@ -9,7 +9,6 @@ const Index = ({ t }) => {
       animate={{
         opacity: 1,
       }}
-      exit={{ opacity: 0 }}
       className=' flex flex-col'
     >
       <Hero />

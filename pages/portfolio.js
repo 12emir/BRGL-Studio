@@ -1,16 +1,17 @@
-import { useEffect } from "react";
-import { i18n, Link, withTranslation } from "../i18n";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import Portfolio from "@/Portfolio";
-import { useTheme, useThemeUpdate } from "@/ThemeContext";
+import Portfolio from "@/Portfolio/Portfolio";
+import useSWR from "swr";
 
 const Work = ({ t }) => {
-  const { darkNavTheme } = useTheme();
-  const { light, lightNav } = useThemeUpdate();
-  useEffect(() => {
-    lightNav();
-  }, []);
+  const { data, error } = useSWR(
+    "https://brgl.fancycod.hs10.linux.pl/wp-json/wp/v2/posts?_embed&per_page=30"
+  );
+
+  if (error) {
+    console.log(error);
+    return <div>failed to load</div>;
+  }
+  if (!data) return <div>loading...</div>;
 
   return (
     <motion.div
@@ -21,11 +22,9 @@ const Work = ({ t }) => {
       exit={{ opacity: 0 }}
       className=' flex flex-col'
     >
-      <Portfolio />
+      <Portfolio data={data} />
     </motion.div>
   );
 };
-Work.getInitialProps = async () => ({
-  namespacesRequired: ["common"],
-});
-export default withTranslation("common")(Work);
+
+export default Work;

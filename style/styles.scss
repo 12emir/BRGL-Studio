@@ -74,7 +74,7 @@ body {
 
 .hamburger {
   z-index: 1;
-  position: absolute;
+  position: fixed;
   top: 2em;
   right: 2em;
 }
@@ -148,8 +148,7 @@ body {
   width: 100vw;
   mix-blend-mode: screen;
 }
-.hero-title {
-}
+
 .hero-title-content {
   position: absolute;
   bottom: 5%;

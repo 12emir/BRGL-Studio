@@ -127,7 +127,7 @@ const MorphOverlay = () => {
   const { isHamburgerOpen } = useThemeUpdate();
 
   return (
-    <div className='primary-bg h-screen  fixed w-screen flex justify-center items-center'>
+    <div className='morph h-screen  w-screen flex justify-center items-center'>
       <NavLinks />
     </div>
   );

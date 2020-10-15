@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { withTranslation } from "../i18n";
+import { withTranslation, Link } from "../i18n";
 import tw from "twin.macro";
 
 import gsap, { Power4 } from "gsap";
@@ -37,8 +37,7 @@ const Hero = ({ t }) => {
 
   const logoMouseOver = () => {
     gsap.to(".czesc", {
-      scale: 0.9,
-      letterSpacing: "30px",
+      letterSpacing: "20px",
       ease: "elastic.out",
       duration: 1.9,
     });
@@ -46,12 +45,12 @@ const Hero = ({ t }) => {
 
   const logoMouseOut = () => {
     gsap.to(".czesc", {
-      scale: 1,
       letterSpacing: "10px",
       ease: "elastic.out",
       duration: 2.9,
     });
   };
+
   return (
     <div className='shapes-container flex justify-center items-center h-screen bg-white'>
       <div className='shapes'>
@@ -63,17 +62,29 @@ const Hero = ({ t }) => {
       <div
         className={` hero-content ${darkNavTheme ? "bg-black" : "bg-white"}`}
       >
-        <div>
+        <Link href='/portfolio'>
           <motion.h1
+            exit={{
+              opacity: 0,
+              letterSpacing: "50px",
+              transition: { ease: "easeInOut" },
+            }}
             className={`czesc  ${darkNavTheme ? "text-white" : "text-black"}`}
-            onClick={toggleTheme}
             onMouseEnter={logoMouseOver}
             onMouseLeave={logoMouseOut}
           >
             {t("title")}
           </motion.h1>
-        </div>
-        <div
+        </Link>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: { ease: "easeOut", duration: 1, delay: 0.6 },
+          }}
+          exit={{ y: 30, opacity: 0, transition: { ease: "easeOut" } }}
           className={` hero-title-content ${
             darkNavTheme ? "text-white" : "text-black"
           }`}
@@ -94,7 +105,7 @@ const Hero = ({ t }) => {
             </AnimatePresence>
           </div>
           <p>{t("content")}</p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
