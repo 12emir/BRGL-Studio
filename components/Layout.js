@@ -1,4 +1,4 @@
-import Nav from "@/Nav.js";
+import Nav from "@/Nav/Nav.js";
 import Footer from "@/Footer.js";
 import Cursor from "@/Cursor";
 const Layout = ({ children }) => {
